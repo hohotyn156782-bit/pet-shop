@@ -490,18 +490,13 @@ h4 {
 
 .hero-content {
   position: relative;
+  z-index: 2;
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
   padding: 40px;
 }
 
-.hero-content h1,
-.hero-content p,
-.hero-content .hero-buttons {
-  position: relative;
-  z-index: 3;
-}
 
 
 .hero-content h1 {
@@ -528,7 +523,7 @@ h4 {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
   will-change: transform;
   margin-left: -60px;
