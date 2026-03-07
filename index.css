@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
 :root {
+  color-scheme: only light;
   --bg: #FFF8F0;
   --bg-card: #FFFFFF;
   --accent: #E8A87C;
