@@ -200,10 +200,10 @@ function initHeroInteractivity() {
     const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
-        lottieEl.style.width = '70px';
-        lottieEl.style.height = '70px';
-        dogContainer.style.marginLeft = '-35px';
-        dogContainer.style.marginTop = '-35px';
+        lottieEl.style.width = '105px';
+        lottieEl.style.height = '105px';
+        dogContainer.style.marginLeft = '-52px';
+        dogContainer.style.marginTop = '-52px';
     }
 
     function animateDog(time) {
