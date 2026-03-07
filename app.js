@@ -180,6 +180,20 @@ function initHeroInteractivity() {
     const heroSection = document.querySelector('.hero');
     const dogContainer = document.getElementById('interactiveDog');
     const flipWrapper = dogContainer ? dogContainer.querySelector('.dog-flip-wrapper') : null;
+    const heroPanel = document.getElementById('heroPanel');
+    const heroContent = document.querySelector('.hero-content');
+
+    function positionPanel() {
+        if (!heroPanel || !heroContent || !heroSection) return;
+        const heroRect = heroSection.getBoundingClientRect();
+        const contentRect = heroContent.getBoundingClientRect();
+        heroPanel.style.left = (contentRect.left - heroRect.left) + 'px';
+        heroPanel.style.top = (contentRect.top - heroRect.top) + 'px';
+        heroPanel.style.width = contentRect.width + 'px';
+        heroPanel.style.height = contentRect.height + 'px';
+    }
+    positionPanel();
+    window.addEventListener('resize', positionPanel);
     const lottieEl = document.getElementById('lottie-dog');
 
     if (!heroSection || !dogContainer || !lottieEl) return;
