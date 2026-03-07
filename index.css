@@ -488,9 +488,12 @@ h4 {
 
 
 
-.hero-content {
+.hero > .container {
   position: relative;
   z-index: 2;
+}
+
+.hero-content {
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
