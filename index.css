@@ -494,6 +494,9 @@ h4 {
   max-width: 700px;
   text-align: center;
   margin: 0 auto;
+  background: rgba(255, 248, 240, 0.85);
+  padding: 40px;
+  border-radius: var(--radius);
 }
 
 .hero-content h1 {
@@ -537,7 +540,7 @@ h4 {
 }
 
 .dog-bounce-wrapper {
-  filter: drop-shadow(0 8px 10px rgba(97, 65, 36, 0.2));
+  filter: none;
 }
 
 @keyframes dogBreathe {
