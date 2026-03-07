@@ -504,11 +504,7 @@ h4 {
 }
 
 .hero-panel {
-  position: absolute;
-  z-index: 1;
-  background: rgba(255, 248, 240, 0.85);
-  border-radius: var(--radius);
-  pointer-events: none;
+  display: none;
 }
 
 .hero-content h1 {
