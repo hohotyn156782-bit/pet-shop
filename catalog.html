@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Martin Moore</title>
+    <meta name="description"
+        content="Каталог товаров для животных: корма, игрушки, амуниция, ветаптека. Фильтры по виду, возрасту и категории.">
+    <link rel="stylesheet" href="index.css?v=9">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Martin<span>Moore</span></div>
+            <div class="preloader-paw">🐾</div>
+            <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Martin<span>Moore</span></a>
+            <div class="search-bar" id="searchBar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Найти корм, игрушки, аксессуары..." autocomplete="off">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="catalog.html" style="color:var(--accent)">Каталог</a>
+                <a href="blog.html">Блог</a>
+                <a href="account.html">Кабинет</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="cart.html" class="btn-icon" aria-label="Корзина">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="account.html" class="btn-icon" aria-label="Аккаунт">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </a>
+                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="catalog-layout">
+            <!-- FILTERS SIDEBAR -->
+            <aside class="filters" id="filtersPanel">
+                <div class="filters-header">
+                    <h3>Фильтры</h3>
+                    <button class="filters-reset" id="filtersReset">Сбросить</button>
+                </div>
+
+                <button class="filters-toggle" id="filtersToggle">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="18" y2="18"/>
+                        <circle cx="8" cy="6" r="2" fill="currentColor"/><circle cx="18" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="18" r="2" fill="currentColor"/>
+                    </svg>
+                    Фильтры
+                </button>
+
+                <div class="filters-body" id="filtersBody">
+                    <div class="filter-group">
+                        <h4>Вид животного</h4>
+                        <label><input type="checkbox" value="dogs" class="filter-animal"> Собаки</label>
+                        <label><input type="checkbox" value="cats" class="filter-animal"> Кошки</label>
+                        <label><input type="checkbox" value="birds" class="filter-animal"> Птицы</label>
+                        <label><input type="checkbox" value="rodents" class="filter-animal"> Грызуны</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Категория</h4>
+                        <label><input type="checkbox" value="dry-food" class="filter-category"> Сухой корм</label>
+                        <label><input type="checkbox" value="wet-food" class="filter-category"> Влажный корм</label>
+                        <label><input type="checkbox" value="toys" class="filter-category"> Игрушки</label>
+                        <label><input type="checkbox" value="ammo" class="filter-category"> Амуниция</label>
+                        <label><input type="checkbox" value="litter" class="filter-category"> Наполнители</label>
+                        <label><input type="checkbox" value="pharmacy" class="filter-category"> Ветаптека</label>
+                        <label><input type="checkbox" value="hygiene" class="filter-category"> Гигиена</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Возраст</h4>
+                        <label><input type="checkbox" value="puppy" class="filter-age"> Щенки / Котята</label>
+                        <label><input type="checkbox" value="adult" class="filter-age"> Взрослые</label>
+                        <label><input type="checkbox" value="senior" class="filter-age"> Пожилые</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Бренд</h4>
+                        <div id="brandFilters"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Цена, &#8381;</h4>
+                        <div class="price-range">
+                            <input type="number" class="input input-sm" id="priceMin" placeholder="от" min="0">
+                            <span>—</span>
+                            <input type="number" class="input input-sm" id="priceMax" placeholder="до" min="0">
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- PRODUCTS -->
+            <section class="catalog-main">
+                <div class="catalog-header">
+                    <div class="catalog-info">
+                        <h2>Каталог товаров</h2>
+                        <span class="catalog-count" id="catalogCount"></span>
+                    </div>
+                    <select id="sortSelect">
+                        <option value="popular">По популярности</option>
+                        <option value="price-asc">Сначала дешевле</option>
+                        <option value="price-desc">Сначала дороже</option>
+                        <option value="rating">По рейтингу</option>
+                    </select>
+                </div>
+                <div class="products-grid" id="catalogGrid">
+                    <div class="catalog-loading">Загрузка товаров...</div>
+                </div>
+                <div class="catalog-empty" id="catalogEmpty" style="display:none">
+                    <div class="catalog-empty-icon">🔍</div>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить фильтры или сбросить все параметры</p>
+                    <button class="btn btn-secondary btn-sm" id="emptyReset">Сбросить фильтры</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Martin<span style="color:var(--accent-light)">Moore</span></h4>
+                    <p>Интернет-магазин товаров для животных. Забота начинается с качественных продуктов.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Каталог</h4><a href="catalog.html?animal=dogs">Для собак</a><a
+                        href="catalog.html?animal=cats">Для кошек</a><a href="catalog.html?animal=birds">Для птиц</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Покупателям</h4><a href="#">Доставка и оплата</a><a href="#">Возврат товара</a><a
+                        href="blog.html">Блог</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4><a href="tel:+78001234567">8 (800) 123-45-67</a><a
+                        href="mailto:info@martinmoore.ru">info@martinmoore.ru</a>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 Martin Moore</span><span>Политика конфиденциальности</span></div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=9"></script>
+    <script>
+        let allProducts = [];
+
+        async function getProducts() {
+            try {
+                const res = await fetch('products.json');
+                if (!res.ok) throw new Error(res.status);
+                return await res.json();
+            } catch (e) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'products-fallback.js';
+                    script.onload = () => resolve(window.PRODUCTS_DATA || []);
+                    script.onerror = () => reject(new Error('No fallback'));
+                    document.head.appendChild(script);
+                });
+            }
+        }
+
+        function getBadgeHTML(product) {
+            if (!product.badge) return '';
+            const badges = {
+                'hit': '<span class="badge badge-hit">Хит</span>',
+                'new': '<span class="badge badge-new">New</span>',
+                'sale': product.oldPrice ? `<span class="badge badge-sale">-${Math.round((1 - product.price / product.oldPrice) * 100)}%</span>` : ''
+            };
+            return badges[product.badge] || '';
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('catalogGrid');
+            const empty = document.getElementById('catalogEmpty');
+            const countEl = document.getElementById('catalogCount');
+
+            countEl.textContent = `Найдено: ${products.length}`;
+
+            if (!products.length) {
+                grid.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = '';
+            empty.style.display = 'none';
+
+            grid.innerHTML = products.map(p => `
+                <a href="product.html?id=${p.id}" class="product-card animate-in">
+                    ${getBadgeHTML(p)}
+                    <div class="product-card-img"><img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy"></div>
+                    <div class="product-card-body">
+                        <div class="product-card-brand">${p.brand}</div>
+                        <div class="product-card-title">${p.name}</div>
+                        <div class="product-card-rating">
+                            <span class="stars">${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}</span>
+                            <span class="count">(${p.reviewCount})</span>
+                        </div>
+                        <div class="product-card-footer">
+                            <div>
+                                <span class="product-card-price">${p.price.toLocaleString('ru-RU')} &#8381;</span>
+                                ${p.oldPrice ? `<span class="product-card-old-price">${p.oldPrice.toLocaleString('ru-RU')} &#8381;</span>` : ''}
+                            </div>
+                            <button class="add-to-cart" data-id="${p.id}" data-name="${p.brand} ${p.name}" data-price="${p.price}" data-image="${p.image}" aria-label="В корзину">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+
+            initAddToCartButtons();
+            initAnimations();
+        }
+
+        function getActiveFilters() {
+            return {
+                animal: [...document.querySelectorAll('.filter-animal:checked')].map(c => c.value),
+                category: [...document.querySelectorAll('.filter-category:checked')].map(c => c.value),
+                age: [...document.querySelectorAll('.filter-age:checked')].map(c => c.value),
+                brand: [...document.querySelectorAll('.filter-brand:checked')].map(c => c.value),
+                priceMin: parseInt(document.getElementById('priceMin').value) || 0,
+                priceMax: parseInt(document.getElementById('priceMax').value) || Infinity,
+                sort: document.getElementById('sortSelect').value
+            };
+        }
+
+        function applyFilters() {
+            const f = getActiveFilters();
+
+            let filtered = allProducts.filter(p => {
+                if (f.animal.length && !f.animal.includes(p.animal)) return false;
+                if (f.category.length && !f.category.includes(p.category)) return false;
+                if (f.age.length && !f.age.includes(p.age) && p.age !== 'all') return false;
+                if (f.brand.length && !f.brand.includes(p.brand)) return false;
+                if (p.price < f.priceMin) return false;
+                if (p.price > f.priceMax) return false;
+                return true;
+            });
+
+            if (f.sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+            else if (f.sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+            else if (f.sort === 'rating') filtered.sort((a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount);
+            else filtered.sort((a, b) => b.reviewCount - a.reviewCount);
+
+            renderProducts(filtered);
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.filters input[type="checkbox"]').forEach(c => c.checked = false);
+            document.getElementById('priceMin').value = '';
+            document.getElementById('priceMax').value = '';
+            document.getElementById('sortSelect').value = 'popular';
+            applyFilters();
+        }
+
+        function buildBrandFilters(products) {
+            const brands = [...new Set(products.map(p => p.brand))].sort();
+            document.getElementById('brandFilters').innerHTML = brands.map(b =>
+                `<label><input type="checkbox" value="${b}" class="filter-brand"> ${b}</label>`
+            ).join('');
+        }
+
+        async function initCatalog() {
+            try {
+                allProducts = await getProducts();
+            } catch (e) {
+                document.getElementById('catalogGrid').innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px 0">Ошибка загрузки товаров. Откройте через <strong>http://localhost:8090</strong></p>';
+                return;
+            }
+
+            buildBrandFilters(allProducts);
+
+            // Bind filter events
+            document.querySelectorAll('.filters input[type="checkbox"]').forEach(c =>
+                c.addEventListener('change', applyFilters)
+            );
+            document.getElementById('priceMin').addEventListener('input', applyFilters);
+            document.getElementById('priceMax').addEventListener('input', applyFilters);
+            document.getElementById('sortSelect').addEventListener('change', applyFilters);
+            document.getElementById('filtersReset').addEventListener('click', resetFilters);
+            document.getElementById('emptyReset').addEventListener('click', resetFilters);
+
+            // Mobile filter toggle
+            const toggle = document.getElementById('filtersToggle');
+            const body = document.getElementById('filtersBody');
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('open');
+                toggle.classList.toggle('active');
+            });
+
+            // Apply URL params
+            const params = new URLSearchParams(window.location.search);
+            const animalParam = params.get('animal');
+            const categoryParam = params.get('category');
+            if (animalParam) {
+                const chk = document.querySelector(`.filter-animal[value="${animalParam}"]`);
+                if (chk) chk.checked = true;
+            }
+            if (categoryParam) {
+                const chk = document.querySelector(`.filter-category[value="${categoryParam}"]`);
+                if (chk) chk.checked = true;
+            }
+
+            applyFilters();
+        }
+
+        document.addEventListener('DOMContentLoaded', initCatalog);
+    </script>
+</body>
+
+</html>

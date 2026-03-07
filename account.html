@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — Martin Moore</title>
+    <meta name="description"
+        content="Личный кабинет Martin Moore: профиль питомца, история заказов, программа лояльности.">
+    <link rel="stylesheet" href="index.css?v=9">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Martin<span>Moore</span></div>
+            <div class="preloader-paw">🐾</div>
+            <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Martin<span>Moore</span></a>
+            <div class="search-bar" id="searchBar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Найти корм, игрушки, аксессуары..." autocomplete="off">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="catalog.html">Каталог</a>
+                <a href="blog.html">Блог</a>
+                <a href="account.html" style="color:var(--accent)">Кабинет</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="cart.html" class="btn-icon" aria-label="Корзина">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="account.html" class="btn-icon" style="color:var(--accent)" aria-label="Аккаунт">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </a>
+                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container account-page">
+        <h1 style="margin-bottom:32px">Личный кабинет</h1>
+
+        <div class="account-layout">
+            <!-- SIDEBAR -->
+            <nav class="account-sidebar">
+                <a href="#" class="active" onclick="showSection('profile',this)">👤 Профиль</a>
+                <a href="#" onclick="showSection('pets',this)">🐾 Мои питомцы</a>
+                <a href="#" onclick="showSection('orders',this)">📦 Заказы</a>
+                <a href="#" onclick="showSection('loyalty',this)">⭐ Баллы</a>
+            </nav>
+
+            <!-- CONTENT -->
+            <div class="account-content">
+                <!-- PROFILE -->
+                <div class="account-section active" id="section-profile">
+                    <h2 style="margin-bottom:24px">Профиль</h2>
+                    <form style="display:grid;gap:16px;max-width:480px">
+                        <div><label
+                                style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Имя</label><input
+                                class="input" type="text" value="Павел" id="profileName"></div>
+                        <div><label
+                                style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Телефон</label><input
+                                class="input" type="tel" value="+7 (999) 123-45-67"></div>
+                        <div><label
+                                style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Email</label><input
+                                class="input" type="email" value="pavel@example.com"></div>
+                        <div><label
+                                style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Город</label><input
+                                class="input" type="text" value="Москва"></div>
+                        <button type="button" class="btn btn-primary" style="justify-self:start"
+                            onclick="showToast('Профиль сохранён ✓')">Сохранить</button>
+                    </form>
+                </div>
+
+                <!-- PETS -->
+                <div class="account-section" id="section-pets" style="display:none">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+                        <h2>Мои питомцы</h2>
+                        <button class="btn btn-primary btn-sm"
+                            onclick="document.getElementById('addPetModal').classList.add('active')">+ Добавить</button>
+                    </div>
+
+                    <div class="pet-card">
+                        <div class="pet-avatar">🐕</div>
+                        <div style="flex:1">
+                            <h4>Барон</h4>
+                            <p style="font-size:.85rem;color:var(--text-muted)">Лабрадор-ретривер • 3 года • Крупная
+                                порода</p>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Подобрать корм</button>
+                    </div>
+
+                    <div class="pet-card">
+                        <div class="pet-avatar">🐈</div>
+                        <div style="flex:1">
+                            <h4>Муся</h4>
+                            <p style="font-size:.85rem;color:var(--text-muted)">Британская короткошёрстная • 5 лет •
+                                Средняя</p>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Подобрать корм</button>
+                    </div>
+                </div>
+
+                <!-- ORDERS -->
+                <div class="account-section" id="section-orders" style="display:none">
+                    <h2 style="margin-bottom:24px">История заказов</h2>
+
+                    <div class="order-item">
+                        <div>
+                            <div style="font-weight:700">Заказ #MM-2847</div>
+                            <div style="font-size:.85rem;color:var(--text-muted)">12 февраля 2026 • 3 товара</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div style="font-weight:700">8 660 ₽</div>
+                            <span class="badge badge-new" style="font-size:.7rem">Доставлен</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm"
+                            onclick="showToast('Товары добавлены в корзину!')">Повторить</button>
+                    </div>
+
+                    <div class="order-item">
+                        <div>
+                            <div style="font-weight:700">Заказ #MM-2631</div>
+                            <div style="font-size:.85rem;color:var(--text-muted)">28 января 2026 • 2 товара</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div style="font-weight:700">5 340 ₽</div>
+                            <span class="badge badge-new" style="font-size:.7rem">Доставлен</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm"
+                            onclick="showToast('Товары добавлены в корзину!')">Повторить</button>
+                    </div>
+
+                    <div class="order-item">
+                        <div>
+                            <div style="font-weight:700">Заказ #MM-2410</div>
+                            <div style="font-size:.85rem;color:var(--text-muted)">15 января 2026 • 1 товар</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div style="font-weight:700">4 890 ₽</div>
+                            <span class="badge badge-new" style="font-size:.7rem">Доставлен</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm"
+                            onclick="showToast('Товары добавлены в корзину!')">Повторить</button>
+                    </div>
+                </div>
+
+                <!-- LOYALTY -->
+                <div class="account-section" id="section-loyalty" style="display:none">
+                    <h2 style="margin-bottom:24px">Программа лояльности</h2>
+
+                    <div class="loyalty-card">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div>
+                                <div style="font-size:.85rem;opacity:.8">Ваш статус</div>
+                                <div style="font-size:1.6rem;font-weight:900">🥈 Серебро</div>
+                            </div>
+                            <div style="text-align:right">
+                                <div style="font-size:.85rem;opacity:.8">Баллы</div>
+                                <div style="font-size:1.6rem;font-weight:900">1 240</div>
+                            </div>
+                        </div>
+                        <div style="margin-top:16px;font-size:.85rem;opacity:.8">До золотого статуса: ещё 760 баллов
+                        </div>
+                        <div class="loyalty-progress">
+                            <div class="loyalty-progress-fill" style="width:62%"></div>
+                        </div>
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
+                        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:20px;text-align:center">
+                            <div style="font-size:1.8rem;margin-bottom:8px">🥉</div>
+                            <h4>Бронза</h4>
+                            <p style="font-size:.8rem;color:var(--text-muted)">Скидка 3%<br>От 0 баллов</p>
+                        </div>
+                        <div
+                            style="background:var(--accent-light);border-radius:var(--radius-sm);padding:20px;text-align:center;border:2px solid var(--accent)">
+                            <div style="font-size:1.8rem;margin-bottom:8px">🥈</div>
+                            <h4>Серебро</h4>
+                            <p style="font-size:.8rem;color:var(--text-muted)">Скидка 5%<br>От 500 баллов</p>
+                        </div>
+                        <div style="background:var(--bg);border-radius:var(--radius-sm);padding:20px;text-align:center">
+                            <div style="font-size:1.8rem;margin-bottom:8px">🥇</div>
+                            <h4>Золото</h4>
+                            <p style="font-size:.8rem;color:var(--text-muted)">Скидка 10%<br>От 2000 баллов</p>
+                        </div>
+                    </div>
+
+                    <p style="color:var(--text-light);font-size:.9rem;line-height:1.7">Баллы начисляются за каждую
+                        покупку: <strong>1 балл = 10 ₽</strong>. Баллы можно использовать для оплаты до 30% стоимости
+                        следующего заказа.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADD PET MODAL -->
+        <div class="modal-overlay" id="addPetModal">
+            <div class="modal" style="position:relative">
+                <button class="btn-icon" style="position:absolute;top:16px;right:16px"
+                    onclick="document.getElementById('addPetModal').classList.remove('active')">✕</button>
+                <h2>Добавить питомца</h2>
+                <form onsubmit="savePet(event)" style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
+                    <input class="input" type="text" placeholder="Кличка" required>
+                    <select class="input" style="padding:14px 20px">
+                        <option value="">Вид животного</option>
+                        <option>Собака</option>
+                        <option>Кошка</option>
+                        <option>Птица</option>
+                        <option>Грызун</option>
+                    </select>
+                    <input class="input" type="text" placeholder="Порода">
+                    <input class="input" type="date" placeholder="Дата рождения">
+                    <select class="input" style="padding:14px 20px">
+                        <option value="">Размер породы</option>
+                        <option>Мелкая</option>
+                        <option>Средняя</option>
+                        <option>Крупная</option>
+                    </select>
+                    <button type="submit" class="btn btn-green" style="width:100%">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Martin<span style="color:var(--accent-light)">Moore</span></h4>
+                    <p>Забота начинается с качественных продуктов.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Каталог</h4><a href="catalog.html?animal=dogs">Для собак</a><a
+                        href="catalog.html?animal=cats">Для кошек</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Покупателям</h4><a href="#">Доставка</a><a href="blog.html">Блог</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4><a href="tel:+78001234567">8 (800) 123-45-67</a>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 Martin Moore</span><span>Политика конфиденциальности</span></div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+    <script src="app.js?v=9"></script>
+    <script>
+        function showSection(id, link) {
+            document.querySelectorAll('.account-section').forEach(s => s.style.display = 'none');
+            document.getElementById('section-' + id).style.display = 'block';
+            document.querySelectorAll('.account-sidebar a').forEach(a => a.classList.remove('active'));
+            if (link) link.classList.add('active');
+        }
+        function savePet(e) {
+            e.preventDefault();
+            document.getElementById('addPetModal').classList.remove('active');
+            showToast('Питомец добавлен! 🐾');
+        }
+    </script>
+</body>
+
+</html>
