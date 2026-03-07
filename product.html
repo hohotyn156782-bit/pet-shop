@@ -225,10 +225,12 @@
                         <div class="tab-content" id="tab-nutrition">
                             <h3>Состав и пищевая ценность</h3>
                             ${p.composition ? `<p style="margin:12px 0;color:var(--text-light)">${p.composition}</p>` : ''}
-                            <table class="nutrition-table" style="margin-top:20px">
+                            <div class="nutrition-table-wrap" style="margin-top:20px">
+                            <table class="nutrition-table">
                                 <thead><tr><th>Нутриент</th><th>Содержание</th><th>Уровень</th></tr></thead>
                                 <tbody>${nutritionHTML}</tbody>
                             </table>
+                            </div>
                         </div>` : ''}
                         <div class="tab-content" id="tab-reviews">
                             <h3 style="margin-bottom:24px">Отзывы покупателей</h3>

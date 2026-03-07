@@ -59,7 +59,7 @@
   animation: preloaderBounce 1s ease-in-out infinite;
 }
 .preloader-bar {
-  width: 180px;
+  width: min(180px, 60vw);
   height: 4px;
   background: var(--border);
   border-radius: 4px;
@@ -222,8 +222,9 @@ h4 {
 }
 
 .btn-sm {
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-size: .85rem;
+  min-height: 44px;
 }
 
 .btn-icon {
@@ -982,8 +983,8 @@ h4 {
 }
 
 .product-card .add-to-cart {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   color: #fff;
@@ -1170,7 +1171,7 @@ h4 {
 .footer-links a {
   display: block;
   opacity: .7;
-  padding: 4px 0;
+  padding: 8px 0;
   font-size: .9rem;
   transition: var(--transition);
 }
@@ -1575,6 +1576,11 @@ h4 {
 }
 
 /* Nutrition table */
+.nutrition-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .nutrition-table {
   width: 100%;
   border-collapse: collapse;
@@ -2095,6 +2101,46 @@ h4 {
     max-width: 100%;
   }
 
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .order-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .gallery-thumbs img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .review-photos img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+  }
+
+  .product-info h1 {
+    font-size: 1.4rem;
+  }
+
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -2209,5 +2255,40 @@ h4 {
 
   .btn {
     width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gallery-thumbs {
+    flex-wrap: wrap;
+  }
+
+  .gallery-thumbs img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .article-title {
+    font-size: 1.4rem;
+  }
+
+  .preloader-logo {
+    font-size: 1.8rem;
   }
 }
