@@ -197,6 +197,14 @@ function initHeroInteractivity() {
 
     let theta = 0;
     let lastTime = performance.now();
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+        lottieEl.style.width = '70px';
+        lottieEl.style.height = '70px';
+        dogContainer.style.marginLeft = '-35px';
+        dogContainer.style.marginTop = '-35px';
+    }
 
     function animateDog(time) {
         const dt = time - lastTime;
@@ -207,8 +215,14 @@ function initHeroInteractivity() {
         if (rect.width > 0) {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rx = Math.min(rect.width * 0.42, 550);
-            const ry = Math.min(rect.height * 0.38, 260);
+            let rx, ry;
+            if (rect.width < 768) {
+                rx = rect.width * 0.46;
+                ry = rect.height * 0.44;
+            } else {
+                rx = Math.min(rect.width * 0.42, 550);
+                ry = Math.min(rect.height * 0.38, 260);
+            }
             const nextX = centerX + rx * Math.cos(theta);
             const nextY = centerY + ry * Math.sin(theta);
             const dx = -Math.sin(theta);
