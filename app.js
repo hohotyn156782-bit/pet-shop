@@ -217,8 +217,8 @@ function initHeroInteractivity() {
             const centerY = rect.height / 2;
             let rx, ry;
             if (rect.width < 1024) {
-                rx = rect.width * 0.52;
-                ry = rect.height * 0.48;
+                rx = rect.width * 0.38;
+                ry = rect.height * 0.35;
             } else {
                 rx = Math.min(rect.width * 0.42, 550);
                 ry = Math.min(rect.height * 0.38, 260);
