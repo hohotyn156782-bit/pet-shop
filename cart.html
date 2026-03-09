@@ -3,9 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Корзина — Martin Moore</title>
     <meta name="description" content="Корзина покупок Martin Moore. Оформите заказ с доставкой.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
     <link rel="stylesheet" href="index.css?v=9">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
@@ -55,7 +58,7 @@
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </a>
-                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+                <button class="burger" id="burger" aria-label="Меню" type="button"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
@@ -104,15 +107,15 @@
                     onclick="document.getElementById('checkoutModal').classList.remove('active')">✕</button>
                 <h2>Оформление заказа</h2>
                 <form onsubmit="submitOrder(event)" style="display:flex;flex-direction:column;gap:16px">
-                    <input class="input" type="text" placeholder="Имя" required>
-                    <input class="input" type="tel" placeholder="Телефон" required>
-                    <input class="input" type="email" placeholder="Email">
-                    <select class="input" style="padding:14px 20px">
+                    <input class="input" type="text" name="name" placeholder="Имя" required>
+                    <input class="input" type="tel" name="phone" placeholder="Телефон" required>
+                    <input class="input" type="email" name="email" placeholder="Email">
+                    <select class="input" name="delivery" style="padding:14px 20px">
                         <option>Доставка курьером</option>
                         <option>Самовывоз из ПВЗ</option>
                     </select>
-                    <input class="input" type="text" placeholder="Адрес доставки">
-                    <textarea class="input" placeholder="Комментарий к заказу" rows="2"
+                    <input class="input" type="text" name="address" placeholder="Адрес доставки">
+                    <textarea class="input" name="comment" placeholder="Комментарий к заказу" rows="2"
                         style="resize:vertical"></textarea>
                     <button type="submit" class="btn btn-green" style="width:100%">Подтвердить заказ</button>
                 </form>
@@ -132,7 +135,7 @@
                         href="catalog.html?animal=cats">Для кошек</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Покупателям</h4><a href="#">Доставка</a><a href="blog.html">Блог</a>
+                    <h4>Покупателям</h4><a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Доставка</a><a href="blog.html">Блог</a>
                 </div>
                 <div class="footer-links">
                     <h4>Контакты</h4><a href="tel:+78001234567">8 (800) 123-45-67</a>

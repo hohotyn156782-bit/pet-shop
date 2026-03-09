@@ -3,10 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет — Martin Moore</title>
     <meta name="description"
         content="Личный кабинет Martin Moore: профиль питомца, история заказов, программа лояльности.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
     <link rel="stylesheet" href="index.css?v=9">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
@@ -56,7 +59,7 @@
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </a>
-                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+                <button class="burger" id="burger" aria-label="Меню" type="button"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
@@ -79,18 +82,18 @@
                 <div class="account-section active" id="section-profile">
                     <h2 style="margin-bottom:24px">Профиль</h2>
                     <form style="display:grid;gap:16px;max-width:480px">
-                        <div><label
+                        <div><label for="profileName"
                                 style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Имя</label><input
                                 class="input" type="text" value="Павел" id="profileName"></div>
-                        <div><label
+                        <div><label for="profilePhone"
                                 style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Телефон</label><input
-                                class="input" type="tel" value="+7 (999) 123-45-67"></div>
-                        <div><label
+                                class="input" type="tel" value="+7 (999) 123-45-67" id="profilePhone"></div>
+                        <div><label for="profileEmail"
                                 style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Email</label><input
-                                class="input" type="email" value="pavel@example.com"></div>
-                        <div><label
+                                class="input" type="email" value="pavel@example.com" id="profileEmail"></div>
+                        <div><label for="profileCity"
                                 style="font-weight:600;font-size:.9rem;display:block;margin-bottom:6px">Город</label><input
-                                class="input" type="text" value="Москва"></div>
+                                class="input" type="text" value="Москва" id="profileCity"></div>
                         <button type="button" class="btn btn-primary" style="justify-self:start"
                             onclick="showToast('Профиль сохранён ✓')">Сохранить</button>
                     </form>
@@ -224,17 +227,17 @@
                     onclick="document.getElementById('addPetModal').classList.remove('active')">✕</button>
                 <h2>Добавить питомца</h2>
                 <form onsubmit="savePet(event)" style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
-                    <input class="input" type="text" placeholder="Кличка" required>
-                    <select class="input" style="padding:14px 20px">
+                    <input class="input" type="text" name="petName" placeholder="Кличка" required>
+                    <select class="input" name="petType" style="padding:14px 20px">
                         <option value="">Вид животного</option>
                         <option>Собака</option>
                         <option>Кошка</option>
                         <option>Птица</option>
                         <option>Грызун</option>
                     </select>
-                    <input class="input" type="text" placeholder="Порода">
-                    <input class="input" type="date" placeholder="Дата рождения">
-                    <select class="input" style="padding:14px 20px">
+                    <input class="input" type="text" name="petBreed" placeholder="Порода">
+                    <input class="input" type="date" name="petBirthday" placeholder="Дата рождения">
+                    <select class="input" name="petSize" style="padding:14px 20px">
                         <option value="">Размер породы</option>
                         <option>Мелкая</option>
                         <option>Средняя</option>
@@ -258,7 +261,7 @@
                         href="catalog.html?animal=cats">Для кошек</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Покупателям</h4><a href="#">Доставка</a><a href="blog.html">Блог</a>
+                    <h4>Покупателям</h4><a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Доставка</a><a href="blog.html">Блог</a>
                 </div>
                 <div class="footer-links">
                     <h4>Контакты</h4><a href="tel:+78001234567">8 (800) 123-45-67</a>

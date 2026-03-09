@@ -13,12 +13,16 @@
   <meta property="og:description" content="Премиальные корма, аксессуары и ветеринарные товары с доставкой на дом. 15 000+ довольных клиентов.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="фото для проекта/og-hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
   <link rel="stylesheet" href="index.css?v=9">
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 </head>
 
 <body>
+  <a href="#categories" class="skip-link">Перейти к содержимому</a>
 
   <!-- PRELOADER -->
   <div class="preloader" id="preloader">
@@ -67,9 +71,9 @@
             <circle cx="12" cy="7" r="4" />
           </svg>
         </a>
-        <div class="burger" id="burger" aria-label="Меню">
+        <button class="burger" id="burger" aria-label="Меню" type="button">
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </div>
     </div>
   </header>
@@ -401,7 +405,7 @@
           <p>Скидки, акции и полезные советы для ваших питомцев. Без спама — обещаем!</p>
         </div>
         <form class="newsletter-form" id="newsletterForm">
-          <input type="email" class="input" placeholder="Ваш email" required>
+          <input type="email" name="email" class="input" placeholder="Ваш email" required>
           <button type="submit" class="btn btn-primary">Подписаться</button>
         </form>
       </div>
@@ -423,9 +427,9 @@
           <p>Интернет-магазин товаров для животных. Мы верим, что забота о питомцах начинается с качественных продуктов
             и заботливого сервиса.</p>
           <div class="footer-socials" style="margin-top:16px">
-            <a href="#" aria-label="Telegram">📱</a>
-            <a href="#" aria-label="VK">💬</a>
-            <a href="#" aria-label="Instagram">📷</a>
+            <a href="javascript:void(0)" aria-label="Telegram" onclick="showToast('Скоро будет доступно')">📱</a>
+            <a href="javascript:void(0)" aria-label="VK" onclick="showToast('Скоро будет доступно')">💬</a>
+            <a href="javascript:void(0)" aria-label="Instagram" onclick="showToast('Скоро будет доступно')">📷</a>
           </div>
         </div>
         <div class="footer-links">
@@ -437,16 +441,16 @@
         </div>
         <div class="footer-links">
           <h4>Покупателям</h4>
-          <a href="#">Доставка и оплата</a>
-          <a href="#">Возврат товара</a>
-          <a href="#">Программа лояльности</a>
+          <a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Доставка и оплата</a>
+          <a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Возврат товара</a>
+          <a href="account.html">Программа лояльности</a>
           <a href="blog.html">Блог</a>
         </div>
         <div class="footer-links">
           <h4>Контакты</h4>
           <a href="tel:+78001234567">8 (800) 123-45-67</a>
           <a href="mailto:info@martinmoore.ru">info@martinmoore.ru</a>
-          <a href="#">Москва, ул. Зоологическая, 12</a>
+          <span style="display:block;opacity:.7;padding:8px 0;font-size:.9rem">Москва, ул. Зоологическая, 12</span>
         </div>
       </div>
       <div class="footer-bottom">
@@ -458,7 +462,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
   <script src="app.js?v=9"></script>
   <script>
     async function loadBlogPreview() {

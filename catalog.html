@@ -3,10 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог — Martin Moore</title>
     <meta name="description"
         content="Каталог товаров для животных: корма, игрушки, амуниция, ветаптека. Фильтры по виду, возрасту и категории.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
     <link rel="stylesheet" href="index.css?v=9">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
@@ -56,7 +59,7 @@
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </a>
-                <div class="burger" id="burger"><span></span><span></span><span></span></div>
+                <button class="burger" id="burger" aria-label="Меню" type="button"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
@@ -160,7 +163,7 @@
                         href="catalog.html?animal=cats">Для кошек</a><a href="catalog.html?animal=birds">Для птиц</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Покупателям</h4><a href="#">Доставка и оплата</a><a href="#">Возврат товара</a><a
+                    <h4>Покупателям</h4><a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Доставка и оплата</a><a href="javascript:void(0)" onclick="showToast('Страница в разработке')">Возврат товара</a><a
                         href="blog.html">Блог</a>
                 </div>
                 <div class="footer-links">

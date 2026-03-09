@@ -74,29 +74,39 @@ function initSearch() {
     });
 }
 
+function escapeHTML(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function highlight(text, query) {
-    const idx = text.toLowerCase().indexOf(query.toLowerCase());
-    if (idx === -1) return text;
-    return text.slice(0, idx) + '<strong style="color:var(--accent)">' + text.slice(idx, idx + query.length) + '</strong>' + text.slice(idx + query.length);
+    const safe = escapeHTML(text);
+    const safeQuery = escapeHTML(query);
+    const idx = safe.toLowerCase().indexOf(safeQuery.toLowerCase());
+    if (idx === -1) return safe;
+    return safe.slice(0, idx) + '<strong style="color:var(--accent)">' + safe.slice(idx, idx + safeQuery.length) + '</strong>' + safe.slice(idx + safeQuery.length);
 }
 
 // ===== CART (localStorage) =====
 function addToCart(item) {
-    const cart = JSON.parse(localStorage.getItem('mm_cart') || '[]');
-    const entry = { id: item.id, name: item.name, price: Number(item.price) };
-    if (item.image) entry.image = item.image;
-    cart.push(entry);
-    localStorage.setItem('mm_cart', JSON.stringify(cart));
+    try {
+        const cart = JSON.parse(localStorage.getItem('mm_cart') || '[]');
+        const entry = { id: item.id, name: item.name, price: Number(item.price) };
+        if (item.image) entry.image = item.image;
+        cart.push(entry);
+        localStorage.setItem('mm_cart', JSON.stringify(cart));
+    } catch (e) { /* localStorage недоступен */ }
     updateCartCount();
     showToast(`${item.name} добавлен в корзину 🛒`);
 }
 
 function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('mm_cart') || '[]');
-    document.querySelectorAll('.cart-count').forEach(el => {
-        el.textContent = cart.length;
-        el.style.display = cart.length ? 'flex' : 'none';
-    });
+    try {
+        const cart = JSON.parse(localStorage.getItem('mm_cart') || '[]');
+        document.querySelectorAll('.cart-count').forEach(el => {
+            el.textContent = cart.length;
+            el.style.display = cart.length ? 'flex' : 'none';
+        });
+    } catch (e) { /* localStorage недоступен */ }
 }
 
 // ===== TOAST NOTIFICATIONS =====
