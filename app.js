@@ -132,8 +132,10 @@ function initBurger() {
             spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-            if (searchBar && window.innerWidth < 768) {
+            if (searchBar && getComputedStyle(burger).display !== 'none') {
                 nav.insertBefore(searchBar, nav.firstChild);
+                searchBar.style.display = 'block';
+                searchBar.style.maxWidth = '100%';
             }
         } else {
             spans[0].style.transform = '';
@@ -143,6 +145,8 @@ function initBurger() {
                 const header = document.querySelector('.header .container');
                 const logo = header.querySelector('.logo');
                 logo.after(searchBar);
+                searchBar.style.display = '';
+                searchBar.style.maxWidth = '';
             }
         }
     });
