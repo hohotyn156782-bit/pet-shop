@@ -2113,6 +2113,13 @@ h4 {
     padding: 20px;
     gap: 12px;
     box-shadow: var(--shadow);
+    z-index: 200;
+  }
+
+  .nav-links.open .search-bar {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 4px;
   }
 
   .hero {

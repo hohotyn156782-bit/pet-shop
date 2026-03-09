@@ -123,6 +123,7 @@ function showToast(msg) {
 function initBurger() {
     const burger = document.getElementById('burger');
     const nav = document.getElementById('navLinks');
+    const searchBar = document.getElementById('searchBar');
     if (!burger || !nav) return;
     burger.addEventListener('click', () => {
         nav.classList.toggle('open');
@@ -131,10 +132,18 @@ function initBurger() {
             spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+            if (searchBar && window.innerWidth < 768) {
+                nav.insertBefore(searchBar, nav.firstChild);
+            }
         } else {
             spans[0].style.transform = '';
             spans[1].style.opacity = '';
             spans[2].style.transform = '';
+            if (searchBar && searchBar.parentElement === nav) {
+                const header = document.querySelector('.header .container');
+                const logo = header.querySelector('.logo');
+                logo.after(searchBar);
+            }
         }
     });
 }
