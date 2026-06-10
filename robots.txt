@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hohotyn156782-bit.github.io/pet-shop/sitemap.xml
